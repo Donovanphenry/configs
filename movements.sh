@@ -1,16 +1,16 @@
 # variables that will be needed throughou the program
 configs_path=~/.configs/nvim
-profile_path=~/.profile
+bashrc_path=~/.bashrc
 
 # set environment variables
 while read -r line; do
 	env_split=($line)
 
 	cmd="export ${env_split[0]}=${env_split[1]}"
-	grep_res=$(grep -c "$cmd" $profile_path)
+	grep_res=$(grep -c "$cmd" $bashrc_path)
 
 	if [ $grep_res = 0 ]; then
-		echo $cmd >> $profile_path
+		echo $cmd >> $bashrc_path
 	fi
 done < .env
 
@@ -20,8 +20,8 @@ if [ ! -f ~/.vimrc ]; then
 fi
 
 # Copy bash profile
-if [ ! -f ~/.bash_profile ]; then
-	cat ./.bash_profile >> $profile_path
+if [ ! -f $bashrc_path ]; then
+	cat ./.bash_profile >> $bashrc_path
 fi
 
 #### NeoVim
