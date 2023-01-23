@@ -1,8 +1,0 @@
-alias ga='git add .'
-alias gc='git commit -m'
-alias gps='git push'
-alias gpl='git pull'
-alias nrd='npm run deploy'
-alias sdu='ssh dphenry@unix.ucsc.edu'
-alias ea='eval `ssh-agent`'
-alias asp='ssh-add ~./.ssh/id_rsa'
