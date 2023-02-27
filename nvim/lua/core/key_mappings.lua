@@ -3,6 +3,9 @@ vim.g.mapleader = ';'
 
 local keymap = vim.keymap
 
+-- Create new line without exiting normal mode
+keymap.set("n", "<leader>o", "o<ESC>")
+
 -- Move into normal mode if clicking escape in terminal
 -- session
 keymap.set("t", "<ESC>", "<C-\\><C-n>")
@@ -10,13 +13,13 @@ keymap.set("t", "<ESC>", "<C-\\><C-n>")
 -- Escape if entering <leader>e 
 keymap.set("i", "<leader>e", "<ESC>")
 
--- Open a new terminal
+-- Terminal
 keymap.set("n", "<leader>c", ":terminal<CR>")
 
 -- Tabs
-keymap.set("n", "<leader>tn", ":tabn<CR>")
-keymap.set("n", "<leader>tp", ":tabp<CR>")
-keymap.set("n", "<leader>tc", ":tabnew<CR>")
+keymap.set("n", "<leader>tk", ":tabn<CR>")
+keymap.set("n", "<leader>tj", ":tabp<CR>")
+keymap.set("n", "<leader>tt", ":tabnew<CR>")
 keymap.set("n", "<leader>tw", ":tabclose<CR>")
 
 -- Deletions

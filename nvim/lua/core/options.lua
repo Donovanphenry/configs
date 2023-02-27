@@ -1,10 +1,22 @@
 local opt = vim.opt
 
+--vim.cmd('autocmd highlight ExtraWhitespace ctermbg=red guibg=red')
+-- vim.cmd('autocmd BufReadPre highlight /\\s\\+$/ ctermbg=red guibg=red')
+-- vim.cmd('autocmd [BufNewFile|BufReadPre] highlight /\\s\\+$/ ctermbg=red guibg=red')
+-- vim.cmd('autocmd match ExtraWhitespace /\\s\\+$/')
+vim.cmd('autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE')
+vim.cmd('autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red')
+vim.cmd[[autocmd BufEnter * match ExtraWhitespace /\s\+$/]]
+vim.cmd[[highlight ExtraWhitespace ctermbg=red guibg=red]]
+
 -- extraneous
+opt.showmatch = true
+opt.hlsearch = true
 opt.incsearch = true
 opt.wildmode = "longest,list,full"
 opt.wildmenu = true
 opt.number = true
+opt.swapfile = false
 -- opt.syntax = "yes"
 
 -- tabs & indentations
