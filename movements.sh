@@ -1,18 +1,24 @@
-# variables that will be needed throughou the program
+#!/bin/bash
+
+profile_type=$1
+if [ -z "$profile_type" ]; then
+  profile_type=.bashrc
+fi
+
+# variables that will be needed throughout the program
 config_path=~/.config
-bashrc_path=~
-bashrc_location=.bashrc
-local_bashrc=$bashrc_path/$bashrc_location
+profile_path=~
+local_profile=$profile_path/$profile_type
 
 # set environment variables
 while read -r line; do
 	env_split=($line)
 
 	cmd="export ${env_split[0]}=${env_split[1]}"
-	grep_res=$(grep -c "$cmd" $bashrc_location)
+	grep_res=$(grep -c "$cmd" ~/$profile_type)
 
 	if [ $grep_res = 0 ]; then
-		echo $cmd >> $bashrc_location
+		echo $cmd >> ~/$profile_type
 	fi
 done < .env
 
@@ -23,14 +29,19 @@ fi
 
 # Copy bash profile
 bash_profile_lines="Custom bash profile"
-grep_res=$(grep -c "$bash_profile_lines" $local_bashrc)
-if [ $grep_res = 0 ]; then
-    cat $bashrc_location >> $local_bashrc
-fi
+profile_lines="Custom bash profile"
+grep_res=$(grep -c "$profile_lines" $local_profile)
+while read -r line; do
+  grep_res=$(grep -c "$line" $local_profile)
+
+  if [ $grep_res = 0 ]; then
+      echo $line >> $local_profile
+  fi
+done < .bashrc
 
 #### NeoVim
 # Installing packer
-packer_path=/home/dawnofvan/.local/share/nvim/site/pack/packer/start/packer.nvim
+packer_path=$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 if [ ! -d $packer_path ]; then
 	git clone --depth 1 https://github.com/wbthomason/packer.nvim $packer_path
 fi
