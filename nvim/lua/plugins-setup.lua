@@ -13,7 +13,7 @@ local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
 -- autocommand that reloads neovim and installs/updates/removes plugins
 -- when file is saved
-vim.cmd([[ 
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
@@ -46,6 +46,26 @@ return packer.startup(function(use)
     -- file explorer
     use("nvim-tree/nvim-tree.lua")
     use("nvim-tree/nvim-web-devicons")
+
+    -- Word completion
+    -- use('neoclide/coc.nvim')
+
+      -- Git plugin with keymaps and config
+    use {
+      "lewis6991/gitsigns.nvim",
+      config = function()
+        local gitsigns = require("gitsigns")
+        gitsigns.setup()
+      end,
+    }
+    use("tpope/vim-fugitive")
+
+    -- Telescope
+    use {
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.5",
+        requires = {{"nvim-lua/plenary.nvim"}}
+    }
 
     if packer_bootstrap then
         require("packer").sync()
