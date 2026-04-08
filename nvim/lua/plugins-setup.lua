@@ -70,4 +70,14 @@ return packer.startup(function(use)
     if packer_bootstrap then
         require("packer").sync()
     end
+
+    -- GitHub Issues & PRs
+    use {
+        "pwntester/octo.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+            "nvim-tree/nvim-web-devicons",
+        }
+    }
 end)
