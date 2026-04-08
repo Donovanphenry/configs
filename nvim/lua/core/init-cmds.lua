@@ -6,6 +6,3 @@ vim.cmd('hi Normal ctermbg=none guibg=none')
 vim.cmd('highlight ExtraWhitespace ctermbg=red guibg=red')
 vim.cmd('match ExtraWhitespace /\\s\\+$/')
 
--- Copilot?
-vim.cmd('packadd copilot.vim')
-vim.g.copilot_enabled = false

@@ -47,10 +47,10 @@ if [ ! -d $packer_path ]; then
 fi
 
 # Moving nvim directory
-if [ ! -d $configs_path ]; then
-	mkdir $configs_path
+if [ ! -d $config_path ]; then
+	mkdir $config_path
 fi
 
-if [ ! -d $configs_path/nvim ]; then
+if [ ! -d $config_path/nvim ]; then
 	cp -r ./nvim ${config_path}/
 fi
