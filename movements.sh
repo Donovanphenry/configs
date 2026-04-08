@@ -51,6 +51,4 @@ if [ ! -d $config_path ]; then
 	mkdir $config_path
 fi
 
-if [ ! -d $config_path/nvim ]; then
-	cp -r ./nvim ${config_path}/
-fi
+rsync -a ./nvim/ ${config_path}/nvim/
