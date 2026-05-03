@@ -11,3 +11,4 @@ require("plugins.nvim-tree")
 require("plugins.lualine")
 require("plugins.telescope")
 require("plugins.octo")  -- Sets up autocmd, actual setup happens after VimEnter
+require("plugins.render-markdown")

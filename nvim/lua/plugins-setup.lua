@@ -67,6 +67,23 @@ return packer.startup(function(use)
         requires = {{"nvim-lua/plenary.nvim"}}
     }
 
+    -- treesitter (required by render-markdown for parsing)
+    -- pinned to master; main branch dropped :TSInstall/:TSUpdate API
+    -- run :TSInstall markdown markdown_inline after install
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        branch = "master",
+    }
+
+    -- in-buffer markdown rendering
+    use {
+        "MeanderingProgrammer/render-markdown.nvim",
+        requires = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
+    }
+
     if packer_bootstrap then
         require("packer").sync()
     end
